@@ -41,7 +41,7 @@ if $bots.any? {|h| h["userid"] == userid}
                                         if $bots.any? {|h| h["userid"] == userid}
                                                 # ws.send "\@"+($bots.find {|bot| bot['magicKey'] = magicKey})['port'].to_s
                                         else
-                                                pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/new/websocketProxy.rb")
+                                                pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/current/websocketProxy.rb")
                                                         puts "Spawning bot on #{testPort}\n"
                                                         # ws.send "\@#{testPort}"
                                                         $bots.push(Hash[ "port", testPort, "magicKey", magicKey, "userid", userid, "pid", pid ])
@@ -196,7 +196,7 @@ end
 					if $bots.any? {|h| h["userid"] == userid} 
                                                 ws.send "\@"+($bots.find {|bot| bot['magicKey'] = magicKey})['port'].to_s
 					else	
-						pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/new/websocketProxy.rb")
+						pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/current/websocketProxy.rb")
 							puts "Spawning bot on #{testPort}\n"
 							ws.send "\@#{testPort}"	
 							$bots.push(Hash[ "port", testPort, "magicKey", magicKey, "userid", userid, "pid", pid ])
