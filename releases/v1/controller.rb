@@ -41,7 +41,7 @@ if $bots.any? {|h| h["userid"] == userid}
                                         if $bots.any? {|h| h["userid"] == userid}
                                                 # ws.send "\@"+($bots.find {|bot| bot['magicKey'] = magicKey})['port'].to_s
                                         else
-                                                pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/current/websocketProxy.rb")
+                                                pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "~/neuroserver/bot/current/websocketProxy.rb")
                                                         puts "Spawning bot on #{testPort}\n"
                                                         # ws.send "\@#{testPort}"
                                                         $bots.push(Hash[ "port", testPort, "magicKey", magicKey, "userid", userid, "pid", pid ])
@@ -110,7 +110,7 @@ end
                 	$db.query("select magic_key from users where bot_userid='#{botid}' LIMIT 1").each do |row|
                                 magic_key = row[0]
                                 end
-                      	controller = `cat $OPENSHIFT_DATA_DIR/conf/controller_number`.chomp
+                      	controller = 'a' 
                         $db.query("update users set controller='#{controller}' where bot_userid='#{botid}'")
                         irc_start_bot(botid, magic_key)
                         response.content << "Starting #{botid} #{magic_key}"
@@ -196,7 +196,7 @@ end
 					if $bots.any? {|h| h["userid"] == userid} 
                                                 ws.send "\@"+($bots.find {|bot| bot['magicKey'] = magicKey})['port'].to_s
 					else	
-						pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "../bot/current/websocketProxy.rb")
+						pid = spawn($rvm_env_vars.merge({ "BOTPORT" => testPort.to_s, "MAGICKEY" => magicKey, "BOTUSERID" => userid}), "~/neuroserver/bot/current/websocketProxy.rb")
 							puts "Spawning bot on #{testPort}\n"
 							ws.send "\@#{testPort}"	
 							$bots.push(Hash[ "port", testPort, "magicKey", magicKey, "userid", userid, "pid", pid ])
