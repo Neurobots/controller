@@ -13,9 +13,9 @@ pp botlist
 
 sleep 3
 
-# botlist.each do |bot|
+ botlist.each do |bot|
 
-#	open(start_url+bot['userid']).read
+	open(start_url+bot['userid']).read
 
-# end
+ end
 
