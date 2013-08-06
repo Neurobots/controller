@@ -3,7 +3,7 @@ default_run_options[:shell] = "bash"
 
 
 set :deploy_to, "/home/joshua/neuroserver/controller"
-set :current_path, "#{deploy_to}/current"
+set :current_path, "#{deploy_to}/v1"
 set :shared_path, "#{deploy_to}/shared"
 
 set :user, "joshua"
