@@ -1,4 +1,6 @@
-re 'open-uri'
+#!/usr/bin/env ruby
+
+require 'open-uri'
 require 'json'
 require 'pp'
 
