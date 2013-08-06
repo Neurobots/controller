@@ -29,7 +29,7 @@ namespace :deploy do
   #override the restart deployment routine
   task :restart, :except => { :no_release => true } do
    #puts "nothing to restart"  
-   #run "ruby #{current_path}/restart_system.rb"
+   run "ruby #{current_path}/restart-system.rb"
   end
 
   #since we aren't deploying via file copy, wipe the cruft
