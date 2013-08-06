@@ -6,9 +6,9 @@ set :deploy_to, "/home/chuck/controller"
 set :current_path, "#{deploy_to}/current"
 set :shared_path, "#{deploy_to}/shared"
 
-set :user, "chuck"
+set :user, "joshua"
 set :use_sudo, false
-set :ssh_options, { forward_agent: true, paranoid: true, keys: "~/.ssh/id_rsa" }
+set :ssh_options, { forward_agent: true, paranoid: true, keys: "~/.ssh/joshua_deploy_key" }
 
 role :app, "dev.neurobots.net"                          # This may be the same as your `Web` server
 
