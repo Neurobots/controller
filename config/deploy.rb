@@ -14,7 +14,7 @@ role :app, "dev.neurobots.net"                          # This may be the same a
 
 
 set :scm, :git 
-set :branch, "deployment"
+set :branch, "master"
 set :repository,  "git@github.com:Neurobots/controller.git"
 
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules", "Capfile", "config/deploy.rb"]
