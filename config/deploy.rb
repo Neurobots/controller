@@ -2,7 +2,7 @@ default_run_options[:pty] = true
 default_run_options[:shell] = "bash"
 
 
-set :deploy_to, "/home/chuck/controller"
+set :deploy_to, "/home/joshua/neuroserver/controller"
 set :current_path, "#{deploy_to}/current"
 set :shared_path, "#{deploy_to}/shared"
 
