@@ -3,7 +3,7 @@ default_run_options[:shell] = "bash"
 
 
 set :deploy_to, "/home/chuck/controller"
-set :current_path, "#{deploy_to}/public_html"
+set :current_path, "#{deploy_to}/current"
 set :shared_path, "#{deploy_to}/shared"
 
 set :user, "chuck"
@@ -14,6 +14,7 @@ role :app, "dev.neurobots.net"                          # This may be the same a
 
 
 set :scm, :git 
+set :branch, "deployment"
 set :repository,  "git@github.com:Neurobots/controller.git"
 
 set :copy_exclude, [".git", ".DS_Store", ".gitignore", ".gitmodules", "Capfile", "config/deploy.rb"]
@@ -25,18 +26,14 @@ after "deploy:restart", "deploy:cleanup"
 namespace :deploy do
   task :restart, :except => { :no_release => true } do
    #puts "nothing to restart"  
-   run "ruby #{current_path}/restart_system.rb"
+   #run "ruby #{current_path}/restart_system.rb"
   end
 
-  task :reset_owner, :except => { :no_release => true } do
-    run "#{sudo} chown -R www-data:www-data #{current_path}"
-  end
-
-end
-
-namespace :file do
-  task :permissions do
-    
+  task :sanitize, :except => { :no_release => true } do
+    run "rm -rf #{current_path}/public"
+    run "rm -rf #{current_path}/log"
+    run "rm -rf #{current_path}/tmp"
+    run "rm -rf #{current_path}/config"
   end
 end
 
@@ -53,6 +50,6 @@ end
   end
 
 #Callbacks
-after "deploy", "file:permissions", "deploy:reset_owner", :brand
+after "deploy", "deploy:sanitize", :brand
 
 
