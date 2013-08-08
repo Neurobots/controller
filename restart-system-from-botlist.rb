@@ -9,7 +9,7 @@ start_url = "http://www.neurobots.net/status/LJaETkMFyHCGVBFHU3uDjelMoVra6qL7rIE
 
 pp botlist
 
-#`pkill -9 ruby*`
+puts 'did you pkill -9 ruby* first?'
 
 sleep 3
 
